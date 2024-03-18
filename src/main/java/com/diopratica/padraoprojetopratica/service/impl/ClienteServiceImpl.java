@@ -2,9 +2,9 @@ package com.diopratica.padraoprojetopratica.service.impl;
 
 
 import com.diopratica.padraoprojetopratica.model.Cliente;
-import com.diopratica.padraoprojetopratica.model.ClienteRepository;
+import com.diopratica.padraoprojetopratica.model.repo.ClienteRepository;
 import com.diopratica.padraoprojetopratica.model.Endereco;
-import com.diopratica.padraoprojetopratica.model.EnderecoRepository;
+import com.diopratica.padraoprojetopratica.model.repo.EnderecoRepository;
 import com.diopratica.padraoprojetopratica.service.ClienteService;
 import com.diopratica.padraoprojetopratica.service.ViaCepService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +47,8 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void atualizar(Long id, Cliente cliente) {
         // Buscar Cliente por ID, caso exista:
-        Optional<Cliente> clienteBd = clienteRepository.findById(id);
-        if (clienteBd.isPresent()) {
+        Optional<Cliente> clienteId = clienteRepository.findById(id);
+        if (clienteId.isPresent()) {
             salvarClienteComCep(cliente);
         }
     }
